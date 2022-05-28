@@ -19,6 +19,7 @@ export class AppComponent {
       this._router.navigateByUrl('/disponibles');
     }else{
       if (this.service.isloggedin()) {
+        if (localStorage.getItem("CantidadCarrito") != null)
         this._router.navigateByUrl('/disponibles');
       }  else{
         this._router.navigateByUrl('/login');
