@@ -1,0 +1,34 @@
+<div class="container d-flex justify-content-center">
+    <div class="row w-75 ">
+        <h1>Productos Disponibles</h1>
+        <div class="form-group" >
+          
+          
+        </div>
+      
+        <div style="border: 2px !important;"> 
+             <ng-select [items]="listaproductosactivos"  bindLabel="NombreProducto" bindValue="NombreProducto"
+             style="width:30%; border:2px!important;" (change)="onChangeProducto($event)" >
+            
+              </ng-select> 
+        <table><tr><td></td></tr></table>
+        <br>
+        <br>
+    </div>
+        <div class="card" style="width: 18rem;" *ngFor="let item of listaproductosactivos">
+            <img class="card-img-top" src="{{item.Imagen}}" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title"><b>{{item.NombreProducto}}</b></h4>
+                <p class="card-text">{{item.Descripcion}}
+                    card's content.</p>
+                    <h3 class="card-title"><b>Precio: {{item.Precio}}</b></h3>
+                    <h3 class="card-title">Cantidad Disponible: {{item.CantidadDisponible}}</h3>
+                    <input type="number"  value="0" min="1" max="{{item.CantidadDisponible}}" id="txtCantidad{{item.IdRecordProducto}}" #CantidadComprar>
+                    <a class="button fancy-button"  (click)="this.nuevoArticulo(item.IdRecordProducto,item.NombreProducto,item.Descripcion,item.Precio,item.CantidadDisponible)"><i class="material-icons">shopping_cart</i>Agregar</a>
+
+            </div>
+        </div>
+        
+      
+    </div>
+</div>

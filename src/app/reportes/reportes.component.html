@@ -1,0 +1,62 @@
+<div>
+    <h3>Top Mas Vendidos</h3>
+
+    <div class="container">
+        <div style="width:100%; overflow-y:auto">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                      
+                        
+                        <th scope="col">CodProducto</th>
+                        <th scope="col">NombreProducto</th>      
+                        <th scope="col">CantidadVentas</th>                 
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let valor of ListaTopMas">
+        
+                        <td>{{valor.CodProducto}}</td>
+                        <td>{{valor.NombreProducto}}</td>
+                        <td>{{valor.CantidadVendido}}</td>
+                       
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+  
+</div>
+
+
+<div>
+    <h3>Top Menos Vendidos</h3>
+
+    <div class="container">
+        <div style="width:100%; overflow-y:auto">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                      
+                       
+                        <th scope="col">CodProducto</th>
+                        <th scope="col">NombreProducto</th>   
+                        <th scope="col">CantidadVentas</th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let valor of ListaTopMenos">
+        
+                        <td>{{valor.CodProducto}}</td>
+                        <td>{{valor.NombreProducto}}</td>
+                        <td>{{valor.CantidadVendido}}</td>
+                       
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+  
+</div>

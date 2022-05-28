@@ -1,0 +1,82 @@
+
+
+<div class="mx-auto" style="width: 200px;">
+    <div >
+      
+     
+            <div >
+                <div ><h2>Gestión de productos</h2></div>
+                <label for="cprod"  >Codigo producto</label>      
+                <input type="text"  id="txtCodProducto"  />
+                
+                <button type="submit" (click)="ConsultarXcodigo()"  class="btn-primary form-control" >Buscar por producto</button>
+                <br>
+                <label for="pass" >NombreProducto</label>
+                <input type="text"   id="txtNombreProducto"  />
+                <label for="pass" >Descripcion</label>
+                <textarea   id="txtDescripcion"  ></textarea>
+                <label for="pass" >Precio</label>
+                <input type="text"   id="txtPrecio"  />
+                <label for="pass" >Cantidad Disponible</label>
+                <input type="text"   id="txtCantidadDisponible"  />                
+                <label for="pass" >Imagen</label>
+                <image-upload (uploadFinished)="onUploadFinish($event)">
+                </image-upload>              
+              
+         
+                <br>
+                <br>
+                <button type="submit" (click)="GuardarCambios()"  class="btn-primary form-control" >Guardar</button>
+                <br>
+                <button type="submit" (click)="ConsultarTodo()"  class="btn-primary form-control" >Consultar</button>
+            </div>
+
+            <div>
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">CodProducto</th>
+                            <th scope="col">NombreProducto</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Estado</th>                          
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let valor of ListarTodo">
+                            <td>{{valor.CodProducto}}</td>
+                            <td>{{valor.NombreProducto}}</td>
+                            <td>{{valor.Descripcion}}</td>
+                            <td>{{valor.Precio}}</td>
+                            <td>{{valor.Estado}}</td>         
+                           
+                            <td> <button type="button" class="btn btn-primary form-control"
+                                    (click)="SeleccionarProductoEliminar(valor.IdRecord)">Eliminar</button>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+           
+        </div>
+        
+      
+    
+</div>
+
+<ng-template #modalOpcionEliminarProducto let-modal>
+
+    <div class="modal-header justify-content-center">
+        <h5 class="modal-title" id="exampleModalLongTitle">¿Esta seguro de eliminar el producto seleccionado?</h5>
+
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" (click)="EliminarProducto()">Confirmar</button>
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cross click')">Cerrar</button>
+
+    </div>
+
+</ng-template>
