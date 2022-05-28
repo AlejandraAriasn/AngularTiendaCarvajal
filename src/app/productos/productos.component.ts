@@ -38,8 +38,6 @@ export class ProductosComponent implements OnInit {
 //     }
 
 if (localStorage.getItem("usuario") !== null && localStorage.getItem("usuario") !== undefined) {
-  console.log("TipoUs");
-  console.log(localStorage.getItem("TipoUsuario")?.toLowerCase() === "admin");
       if ( localStorage.getItem("TipoUsuario")?.toLowerCase() === "admin") {
           this._router.navigateByUrl('/productos');
         } else {
