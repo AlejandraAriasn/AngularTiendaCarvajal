@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     
     this.TipoUsuario=localStorage.getItem("TipoUsuario");
-    console.log("TipoUsuario");
   
   }
   openSnackBar(message: string, action: string) {
@@ -116,7 +115,6 @@ export class NavbarComponent implements OnInit {
               }
               this.service.postRegistrarDetalleCompra(inserDeta).subscribe((datares: {}) => {
                 ResulGuardadoItem = datares;
-              console.log(ResulGuardadoItem);
                 
               });
               if (ResulGuardadoItem!=0 && ResulGuardadoItem!=""){
@@ -124,8 +122,7 @@ export class NavbarComponent implements OnInit {
               }
             }
 
-            console.log("CantidadItemsCompra"+CantidadItemsCompra);
-            console.log("CantidadExitosos"+CantidadExitosos);
+        
             if(CantidadItemsCompra===CantidadExitosos){
               //Compra Exitosa
               this.TipoMensaje=2;

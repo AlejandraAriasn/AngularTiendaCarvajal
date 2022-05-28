@@ -25,27 +25,17 @@ export class ProductosComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, private _router: Router, private ValidaSesion: AutenticacionService, private service: GestionTiendaService, private http: HttpClient, private toastr: ToastrService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-//     let tipous = localStorage.getItem("TipoUsuario");
-// console.log(tipous);
-//     if (localStorage.getItem("userName") !== null && localStorage.getItem("userName") !== undefined) {
-//       if (tipous === "Admin") {
-//         this._router.navigateByUrl('/productos');
-//       } else {
-//         this._router.navigateByUrl('/disponibles');
-//       }
-//     } else {
-//       this._router.navigateByUrl('/login');
-//     }
 
-if (localStorage.getItem("usuario") !== null && localStorage.getItem("usuario") !== undefined) {
-      if ( localStorage.getItem("TipoUsuario")?.toLowerCase() === "admin") {
-          this._router.navigateByUrl('/productos');
-        } else {
-          this._router.navigateByUrl('/disponibles');
-        }
-      }else{
-        this._router.navigateByUrl('/login');
+
+    if (localStorage.getItem("usuario") !== null && localStorage.getItem("usuario") !== undefined) {
+      if (localStorage.getItem("TipoUsuario")?.toLowerCase() === "admin") {
+        this._router.navigateByUrl('/productos');
+      } else {
+        this._router.navigateByUrl('/disponibles');
       }
+    } else {
+      this._router.navigateByUrl('/login');
+    }
   }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -53,7 +43,6 @@ if (localStorage.getItem("usuario") !== null && localStorage.getItem("usuario") 
     });
   }
   GuardarCambios() {
-    console.log("entre")
     var CodProd = <HTMLInputElement>document.getElementById("txtCodProducto");
     var txtNombreProducto = <HTMLInputElement>document.getElementById("txtNombreProducto");
     var txtDescripcion = <HTMLInputElement>document.getElementById("txtDescripcion");
@@ -154,7 +143,7 @@ if (localStorage.getItem("usuario") !== null && localStorage.getItem("usuario") 
 
 
     this.ListarProductosXcod = [];
-    console.log(CodProd.value);
+
     if (CodProd.value != "" && CodProd.value != undefined) {
       this.service.ConsultarProductoXCodigo(CodProd.value).subscribe((data: {}) => {
         this.ListarProductosXcod = data;
@@ -207,7 +196,7 @@ if (localStorage.getItem("usuario") !== null && localStorage.getItem("usuario") 
     let Eliminado;
     this.service.delEliminarProducto(this.IdRecordProductoEliminar).subscribe((data: {}) => {
       Eliminado = data;
-      console.log(Eliminado);
+
     });
 
   }

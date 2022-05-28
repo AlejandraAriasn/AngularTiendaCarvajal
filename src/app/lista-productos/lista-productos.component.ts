@@ -46,7 +46,7 @@ export class ListaProductosComponent implements OnInit {
     this.listaproductosactivos = [];
     this.service.ListarProductosDisponibles().subscribe((data: {}) => {
       this.listaproductosactivos = data;
-      console.log(this.listaproductosactivos);
+     
 
     });
   }
@@ -55,8 +55,7 @@ export class ListaProductosComponent implements OnInit {
     this.listaproductosactivos = [];
     this.service.ListarProductosDisponiblesXNombre($event.NombreProducto).subscribe((data: {}) => {
       this.listaproductosactivos = data;
-      console.log(this.listaproductosactivos);
-
+     
     });
   }
 
